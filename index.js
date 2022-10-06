@@ -8,7 +8,7 @@ class LayerSwitcher {
     this._layers = layers;
     this._identifiers = this._initLayerIdentifiers();
     this._default_visible = default_visible;
-    this._container = el('div', {class: 'mapboxgl-ctrl layer-switcher-list'});
+    this._container = el('div', {class: 'maplibregl-ctrl layer-switcher-list'});
     this._container.appendChild(el('h3', 'Layers'));
     this._visible = [...default_visible];
   }
@@ -99,7 +99,7 @@ class LayerSwitcher {
     }
     if (this._map) {
       this._updateVisibility();
-    } 
+    }
   }
 
   onAdd(map) {
@@ -114,7 +114,7 @@ class LayerSwitcher {
     this._createList();
 
     const wrapper = el('div', {
-      class: 'mapboxgl-ctrl mapboxgl-ctrl-group layer-switcher',
+      class: 'maplibregl-ctrl maplibregl-ctrl-group layer-switcher',
     });
     wrapper.appendChild(this._container);
     wrapper.onmouseover = e => {
