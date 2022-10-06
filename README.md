@@ -1,6 +1,6 @@
-# MapboxGL Layer Switcher
+# MapLibre Layer Switcher
 
-This is a layer switcher component for Mapbox GL JS, which I use on [OpenInfraMap](https://openinframap.org). Layers are
+This is a layer switcher component for MapLibre GL JS, which is based on the Mapbox layer switcher by [@russss](https://github.com/russss/mapboxgl-layer-switcher). Layers are
 selected by the string prefix of the layer name.
 
 This package also includes a modified URL hash component which allows a compact representation of the enabled
@@ -10,11 +10,11 @@ layers to be added to the URL hash.
 
 These steps assume you're using Webpack with css-loader. First, import the layer switcher component and the CSS:
 ```javascript
-import '@russss/mapboxgl-layer-switcher/layerswitcher.css'
-import LayerSwitcher from '@russss/mapboxgl-layer-switcher';
+import '@joeyeschner/maplibre-layer-switcher/layerswitcher.css'
+import LayerSwitcher from '@joeyeschner/maplibre-layer-switcher';
 ```
 
-Now define your layers as an object mapping the layer name to the prefix of the Mapbox GL layers you
+Now define your layers as an object mapping the layer name to the prefix of the MapLibre GL layers you
 want to switch. We also define a list of layers which will be initially enabled:
 ```javascript
 const layers = {
@@ -39,7 +39,7 @@ layer_switcher.setInitialVisibility(style);
 Now we can instantiate our map and add the layer switcher to it:
 ```javascript
 
-const map = new mapboxgl.Map({style: style, container: 'map'});
+const map = new maplibregl.Map({style: style, container: 'map'});
 map.addControl(layer_switcher, 'top-right');
 ```
 
@@ -48,7 +48,7 @@ map.addControl(layer_switcher, 'top-right');
 To include layers in the URL hash, first import and create the `URLHash` object, passing in your `LayerSwitcher`:
 
 ```javascript
-import URLHash from '@russss/mapboxgl-layer-switcher/urlhash';
+import URLHash from '@joeyeschner/maplibre-layer-switcher/urlhash';
 // ...
 const url_hash = new URLHash(layer_switcher);
 ```
@@ -56,7 +56,7 @@ const url_hash = new URLHash(layer_switcher);
 When creating the map, you need to call `url_hash.init`, passing in your default map options. The URLHash class will
 update the `zoom` and `center` options if they're provided in the URL hash. Then call `url_hash.enable` on the map:
 ```javascript
-var map = new mapboxgl.Map(url_hash.init({
+var map = new maplibregl.Map(url_hash.init({
 	container: 'map',
 	style: style,
 	minZoom: 2,
